@@ -40,3 +40,31 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+//select all a anchor form nav
+let navList = document.querySelectorAll("nav a");
+let listContent = siteContent["nav"];
+navList.forEach((x,i)=>{
+  x.textContent = listContent[`nav-item-${i+1}`];
+})
+//adding image to section image part
+let codeSnip = document.querySelector("section img");
+codeSnip.setAttribute("src", siteContent["cta"]["img-src"])
+//adding header
+let header = document.querySelector("section h1");
+header.textContent = siteContent["cta"].h1;
+//
+let inputSet = document.querySelector("section button");
+inputSet.textContent = siteContent["cta"].button;
+let array = ["features", "about", "services", "product", "vision"]
+let mainContents = document.querySelectorAll(".text-content h4");
+mainContents.forEach((x,i)=> x.textContent = siteContent["main-content"][`${array[i]+"-h4"}`])
+let sectionPara = document.querySelectorAll(".main-content p");
+sectionPara.forEach((x,i)=> x.textContent = siteContent["main-content"][`${array[i]+"-content"}`]);
+let mainPicture = document.querySelector(".middle-img ");
+mainPicture.setAttribute("src", "./img/mid-page-accent.jpg")
+let contactInfo = document.querySelectorAll(".contact p");
+contactInfo[0].textContent = siteContent["contact"].address;
+contactInfo[1].textContent = siteContent["contact"].phone;
+contactInfo[2].textContent = siteContent["contact"].email;
+let footerPara = document.querySelector("footer p");
+footerPara.textContent = siteContent["footer"].copyright;
