@@ -45,6 +45,7 @@ let navList = document.querySelectorAll("nav a");
 let listContent = siteContent["nav"];
 navList.forEach((x,i)=>{
   x.textContent = listContent[`nav-item-${i+1}`];
+  x.style.color = "green"
 })
 //adding image to section image part
 let codeSnip = document.querySelector("section img");
@@ -62,9 +63,31 @@ let sectionPara = document.querySelectorAll(".main-content p");
 sectionPara.forEach((x,i)=> x.textContent = siteContent["main-content"][`${array[i]+"-content"}`]);
 let mainPicture = document.querySelector(".middle-img ");
 mainPicture.setAttribute("src", "./img/mid-page-accent.jpg")
+let contact = document.querySelector(".contact h4");
+contact.textContent = siteContent["contact"]["contact-h4"]
 let contactInfo = document.querySelectorAll(".contact p");
+let creatAddress = document.createElement("p");
+
 contactInfo[0].textContent = siteContent["contact"].address;
+ let k = contactInfo[0].textContent.split(" ");
+ let addressStreet = "";
+   for(let i =0; i< k.length-2;i++){
+       addressStreet += k[i]+ " "
+   }
+ let stateCountry = k[k.length-2] +"\n" +k[k.length-1];
+ creatAddress.textContent =stateCountry;
+ console.log(creatAddress)
+ contactInfo[0].textContent = `${addressStreet} `;
+ contactInfo[0].appendChild(creatAddress)
 contactInfo[1].textContent = siteContent["contact"].phone;
 contactInfo[2].textContent = siteContent["contact"].email;
 let footerPara = document.querySelector("footer p");
 footerPara.textContent = siteContent["footer"].copyright;
+//Add content change the color of the navigation text to green;
+let x = document.createElement('a');
+let y = document.createElement('a')
+x.textContent = "Gallery";
+y.textContent =" Home"
+let appendContent = document.querySelector("nav");
+appendContent.appendChild(x);
+appendContent.appendChild(y)
